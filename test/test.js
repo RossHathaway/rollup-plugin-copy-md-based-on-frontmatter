@@ -1,5 +1,6 @@
 const assert = require('assert');
 const rollupStarterPlugin = require('..');
+const five = require('../src/test-export');
 
 describe('Array', function () {
   describe('#indexOf()', function () {
@@ -9,6 +10,12 @@ describe('Array', function () {
 
     it('testing if tests are working', function () {
       assert.strictEqual(rollupStarterPlugin().name, 'starter-plugin');
+    });
+  });
+
+  describe('test of import', function () {
+    it('should be able to import', function () {
+      assert.equal(five, 5);
     });
   });
 });
