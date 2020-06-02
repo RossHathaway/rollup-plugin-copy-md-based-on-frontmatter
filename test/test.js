@@ -1,5 +1,5 @@
 const assert = require('assert');
-const rollupStarterPlugin = require('..');
+const rollupStarterPlugin = require('../src/index.js');
 
 describe('Array', function () {
   describe('#indexOf()', function () {
