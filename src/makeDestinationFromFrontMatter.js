@@ -8,15 +8,31 @@ document_locations:
   - folder_name: Frank Lloyd Wright
 */
 
-export default function makeDestinationFromFrontMatter(frontMatter) {
+export default function makeDestinationFromFrontMatter(
+  frontMatter,
+  names = {
+    parent: 'document_locations',
+    path: 'location',
+    pathSection: 'folder_name',
+  }
+) {
   const destinations = [];
-  let i = 0;
-  // find where document_locations ends
-  // for each "- location: "
+  let destinationsIndex = 0;
+  const parentIndex =
+    frontMatter.indexOf(`- ${names.parent}: \n`) + names.parent.length - 1;
+  let pathIndex =
+    frontMatter.indexOf(`- ${names.path}: \n`, parentIndex) +
+    names.path.length -
+    1;
+  let pathSectionIndex =
+    frontMatter.indexOf(`- ${names.pathSection}: `, pathIndex) +
+    names.pathSection.length +
+    2;
+  let pathSectionEnd = frontMatter.indexOf('\n', pathSectionIndex);
+  const pathSection = frontMatter.substring(pathSectionIndex, pathSectionEnd);
 
-  // for each " - folder_name: " take chars to end of the line and add to destinations[i] + "/"
-
-  // increment i
+  destinations[destinationsIndex] += `/${pathSection}`;
+  destinationsIndex++;
 
   if (!document_locations) {
     throw new Error(
