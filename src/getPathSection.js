@@ -1,4 +1,12 @@
-export default function getPathSection(frontMatter, startIndex = 0, names) {
+export default function getPathSection(
+  frontMatter,
+  startIndex = 0,
+  names = {
+    parent: 'document_locations',
+    path: 'location',
+    pathSection: 'folder_name',
+  }
+) {
   const pathIndex =
     frontMatter.indexOf(`- ${names.path}: \n`, startIndex) + names.path.length;
   const pathSectionIndex =
