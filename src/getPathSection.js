@@ -8,5 +8,5 @@ export default function getPathSection(frontMatter, startIndex = 0, names) {
   const pathSectionEnd = frontMatter.indexOf('\n', pathSectionIndex);
   const pathSection = frontMatter.substring(pathSectionIndex, pathSectionEnd);
 
-  return { pathSection, nextIndex: patSectionEnd };
+  return { pathSection, nextIndex: pathSectionEnd };
 }
