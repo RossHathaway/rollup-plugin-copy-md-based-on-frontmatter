@@ -1,13 +1,3 @@
-/*
-document_locations:
-- location:
-  - folder_name: Categories
-  - folder_name: Architecture
-- location:
-  - folder_name: Featured
-  - folder_name: Frank Lloyd Wright
-*/
-
 export default function makeDestinationFromFrontMatter(
   frontMatter,
   names = {
@@ -20,16 +10,6 @@ export default function makeDestinationFromFrontMatter(
   let destinationsIndex = 0;
   const parentIndex =
     frontMatter.indexOf(`- ${names.parent}: \n`) + names.parent.length - 1;
-  let pathIndex =
-    frontMatter.indexOf(`- ${names.path}: \n`, parentIndex) +
-    names.path.length -
-    1;
-  let pathSectionIndex =
-    frontMatter.indexOf(`- ${names.pathSection}: `, pathIndex) +
-    names.pathSection.length +
-    2;
-  let pathSectionEnd = frontMatter.indexOf('\n', pathSectionIndex);
-  const pathSection = frontMatter.substring(pathSectionIndex, pathSectionEnd);
 
   destinations[destinationsIndex] += `/${pathSection}`;
   destinationsIndex++;
