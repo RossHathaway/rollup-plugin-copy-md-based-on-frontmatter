@@ -1,4 +1,4 @@
-export default function getPathSection(startIndex = 0, names) {
+export default function getPathSection(frontMatter, startIndex = 0, names) {
   const pathIndex =
     frontMatter.indexOf(`- ${names.path}: \n`, startIndex) + names.path.length;
   const pathSectionIndex =
@@ -8,5 +8,5 @@ export default function getPathSection(startIndex = 0, names) {
   const pathSectionEnd = frontMatter.indexOf('\n', pathSectionIndex);
   const pathSection = frontMatter.substring(pathSectionIndex, pathSectionEnd);
 
-  return pathSection;
+  return { pathSection, nextIndex: patSectionEnd };
 }

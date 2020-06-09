@@ -1,3 +1,5 @@
+import getPathSection from './getPathSection';
+
 export default function makeDestinationFromFrontMatter(
   frontMatter,
   names = {
@@ -8,11 +10,15 @@ export default function makeDestinationFromFrontMatter(
 ) {
   const destinations = [];
   let destinationsIndex = 0;
-  const parentIndex =
+  let i =
     frontMatter.indexOf(`- ${names.parent}: \n`) + names.parent.length - 1;
 
-  destinations[destinationsIndex] += `/${pathSection}`;
-  destinationsIndex++;
+  while (i < frontMatter.length) {
+    const { pathSection, nextIndex } = getPathSection(frontMatter, i, names);
+    i = nextIndex;
+    destinations[destinationsIndex] += `/${pathSection}`;
+    destinationsIndex++;
+  }
 
   if (!document_locations) {
     throw new Error(
