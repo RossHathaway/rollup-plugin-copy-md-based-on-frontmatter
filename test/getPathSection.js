@@ -32,7 +32,7 @@ describe('getPathSection', function () {
         ---`,
         58
       ),
-      'Categories/Architecture'
+      'Architecture'
     );
   });
 });
