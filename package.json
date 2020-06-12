@@ -21,8 +21,7 @@
   "scripts": {
     "prebuild": "rimraf -rf dist/*",
     "build": "rollup -c",
-    "test": "rollup -c && mocha",
-    "pretest": "npm run build",
+    "test": "mocha",
     "test-node": "node test/test.js"
   },
   "dependencies": {

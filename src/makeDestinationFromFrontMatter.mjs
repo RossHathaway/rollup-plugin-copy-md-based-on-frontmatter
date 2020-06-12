@@ -1,4 +1,4 @@
-import getPathSection from './getPathSection';
+import getPathSection from './getPathSection.mjs';
 
 export default function makeDestinationFromFrontMatter(
   frontMatter,

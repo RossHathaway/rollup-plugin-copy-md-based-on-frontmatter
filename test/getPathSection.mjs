@@ -1,5 +1,5 @@
-const assert = require('assert');
-const getPathSection = require('../src/getPathSection');
+import { strict as assert } from "assert";
+import getPathSection from '../src/getPathSection.mjs';
 
 describe('getPathSection', function () {
   it('should return first path as pathSection property on object', function () {
