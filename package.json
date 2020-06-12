@@ -1,7 +1,7 @@
 {
-  "name": "rollup-starter-plugin",
-  "version": "1.0.0",
-  "description": "Rollup starter plugin",
+  "name": "rollup-plugin-copy-md-based-on-frontmatter",
+  "version": "0.0.1",
+  "description": "Rollup plugin to copy markdown files to the bundle. The destination of the markdown files is determined by what is in the frontmatter. A function can be supplied by the developer to determine the destination, or they can use the default destination function, which is described more in the docs.",
   "main": "dist/rollup-starter-plugin.cjs.js",
   "module": "dist/rollup-starter-plugin.es.js",
   "files": [
@@ -9,20 +9,24 @@
   ],
   "keywords": [
     "rollup",
-    "rollup-plugin"
+    "rollup-plugin",
+    "copy",
+    "markdown",
+    "frontmatter",
+    "front-matter",
+    "front matter"
   ],
-  "homepage": "https://github.com/rollup/rollup-starter-plugin",
-  "author": "Kenji Okamoto",
+  "homepage": "https://github.com/RossHathaway/rollup-plugin-copy-md-based-on-frontmatter",
+  "author": "Ross Hathaway",
   "license": "MIT",
-  "repository": "rollup/rollup-starter-plugin",
+  "repository": "https://github.com/RossHathaway/rollup-plugin-copy-md-based-on-frontmatter",
   "bugs": {
-    "url": "https://github.com/rollup/rollup-starter-plugin/issues"
+    "url": "https://github.com/RossHathaway/rollup-plugin-copy-md-based-on-frontmatter/issues"
   },
   "scripts": {
     "prebuild": "rimraf -rf dist/*",
     "build": "rollup -c",
-    "test": "mocha",
-    "test-node": "node test/test.js"
+    "test": "mocha"
   },
   "dependencies": {
     "rollup-pluginutils": "^2.8.1"
