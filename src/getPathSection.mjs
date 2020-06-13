@@ -12,7 +12,7 @@ export default function getPathSection(
   const pathSectionIndex =
     frontMatter.indexOf(`- ${names.pathSection}: `, pathIndex) +
     names.pathSection.length +
-    2;
+    4;
   const pathSectionEnd = frontMatter.indexOf('\n', pathSectionIndex);
   const pathSection = frontMatter.substring(pathSectionIndex, pathSectionEnd);
 
