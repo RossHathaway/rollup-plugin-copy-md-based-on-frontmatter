@@ -7,8 +7,10 @@ export default function getPathSection(
     pathSection: 'folder_name',
   }
 ) {
+  console.log('nextIndex', frontMatter.indexOf(`- ${names.path}:\n`, startIndex))
   const pathIndex =
-    frontMatter.indexOf(`- ${names.path}: \n`, startIndex) + names.path.length;
+    frontMatter.indexOf(`- ${names.path}:\n`, startIndex) + names.path.length;
+  console.log('pathIndex', pathIndex)
   const pathSectionIndex =
     frontMatter.indexOf(`- ${names.pathSection}: `, pathIndex) +
     names.pathSection.length +
