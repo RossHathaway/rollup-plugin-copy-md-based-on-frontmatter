@@ -3,7 +3,7 @@ import getPathSection from '../src/getPathSection.mjs';
 
 describe('getPathSection', function () {
   it('should return first path as pathSection property on object', function () {
-    assert.strictEqual(
+    assert.equal(
       getPathSection(`---
       document_locations:
       - location:
@@ -19,7 +19,7 @@ describe('getPathSection', function () {
   });
 
   it('should return next path section after startIndex as property on object ', function () {
-    assert.strictEqual(
+    assert.equal(
       getPathSection(
         `---
       document_locations:
@@ -31,7 +31,7 @@ describe('getPathSection', function () {
         - folder_name: Frank Lloyd Wright
         ---`,
         58
-      ),
+      ).pathSection,
       'Architecture'
     );
   });
