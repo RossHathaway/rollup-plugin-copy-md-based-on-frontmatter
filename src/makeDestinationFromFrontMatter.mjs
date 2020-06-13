@@ -1,4 +1,3 @@
-import getPathSection from './getPathSection.mjs';
 // TODO: add support for | and > before new line characters
 
 /*
@@ -21,44 +20,44 @@ export default function makeDestinationFromFrontMatter(
     pathSection: 'folder_name',
   }
 ) {
-  try {
-    const destinations = [];
-    let destinationsIndex = -1;
-    let startIndex =
-      frontMatter.indexOf(`- ${names.parent}: \n`) + names.parent.length + 3;
-    const locationYaml = frontMatter.slice(startIndex)
-    const yamlSplitOnNewLine = locationYaml.split('\n')
-    let currentPath = ''
+  // try {
+  const destinations = [];
+  let startIndex =
+    frontMatter.indexOf(`- ${names.parent}: \n`) + names.parent.length + 7;
+  const locationYaml = frontMatter.slice(startIndex)
+  const yamlSplitOnNewLine = locationYaml.split('\n')
+  let currentPath = ''
 
-    for (const line of yamlSplitOnNewLine) {
+  for (const line of yamlSplitOnNewLine) {
 
-      if (line.trimStart() === names.path + ': ') {
-        destinations.push(currentPath)
-        currentPath = ''
+    if (line.trimStart() === `- ${names.path}:`) {
+      destinations.push(currentPath)
+      currentPath = ''
 
-      } else if (line.trimStart().startsWith(names.pathSection + ': ')) {
-        // take rest of line and add it to currentPath with /
-        const pathSection = line.trimStart().slice(names.pathSection.length + 2)
-        destinations[destinations.length - 1] += '/' + pathSection
-      } else if (line === '\n') {
-        // continue to next line
-      } else break
-    }
-
-    return destinations;
-  } catch (e) {
-    throw new Error(
-      `Unable to get a destination path from the front matter ${frontMatter}
-       Check example front matter and make sure it matches the properties on the names pbject you passed in. If you use the default names object, the front matter would need to be formatted like this:
-       
-      document_locations:
-      - location:
-        - folder_name: parent-folder
-        - folder_name: child-folder
-      - location:
-        - folder_name: parent-folder
-        - folder_name: child-folder
-        - folder_name: grandchild-folder`
-    );
+    } else if (line.trimStart().startsWith(`- ${names.pathSection}: `)) {
+      // take rest of line and add it to currentPath with /
+      const pathSection = line.trimStart().slice(names.pathSection.length + 2)
+      destinations[destinations.length - 1] += '/' + pathSection
+    } else if (line === '\n') {
+      // continue to next line
+    } else break
   }
+
+  console.log('destinations', destinations)
+  return destinations;
+  // } catch (e) {
+  //   throw new Error(
+  //     `Unable to get a destination path from the front matter ${frontMatter}
+  //      Check example front matter and make sure it matches the properties on the names pbject you passed in. If you use the default names object, the front matter would need to be formatted like this:
+
+  //     document_locations:
+  //     - location:
+  //       - folder_name: parent-folder
+  //       - folder_name: child-folder
+  //     - location:
+  //       - folder_name: parent-folder
+  //       - folder_name: child-folder
+  //       - folder_name: grandchild-folder`
+  //   );
+  // }
 }
