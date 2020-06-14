@@ -3,10 +3,9 @@ import makeDestinationFromFrontMatter from "../src/makeDestinationFromFrontMatte
 
 describe('makeDestinationFromFrontMatter', function () {
     it('should parse `document_locations` property and return array of strings of paths from `document_locations`', function () {
-        assert.equal(
+        assert.deepEqual(
             makeDestinationFromFrontMatter(`---\ndocument_locations:\n  - location:\n    - folder_name: Categories\n    - folder_name: Architecture\n  - location:\n    - folder_name: Featured\n    - folder_name: Frank Lloyd Wright\n---`),
-            makeDestinationFromFrontMatter,
-            [('Categories/Architecture', 'Featured/Frank Lloyd Wright')]
+            ['Categories/Architecture', 'Featured/Frank Lloyd Wright']
         );
     });
 });
