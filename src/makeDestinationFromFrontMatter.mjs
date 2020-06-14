@@ -26,16 +26,20 @@ export default function makeDestinationFromFrontMatter(
     frontMatter.indexOf(`- ${names.parent}: \n`) + names.parent.length + 7;
   const locationYaml = frontMatter.slice(startIndex)
   const yamlSplitOnNewLine = locationYaml.split('\n')
+  let isFirstPathSection = true
 
   for (const line of yamlSplitOnNewLine) {
 
     if (line.trimStart() === `- ${names.path}:`) {
       destinations.push('')
-
+      isFirstPathSection = true
     } else if (line.trimStart().startsWith(`- ${names.pathSection}: `)) {
-      // take rest of line and add it to currentPath with /
       const pathSection = line.trimStart().slice(names.pathSection.length + 4)
-      destinations[destinations.length - 1] += '/' + pathSection
+      const indexToAddTo = destinations.length - 1
+      const pathSectionToAdd = isFirstPathSection ? pathSection : '/' + pathSection
+      isFirstPathSection = false
+      destinations[indexToAddTo] += pathSectionToAdd
+
     } else if (line === '\n') {
       // continue to next line
     } else break
