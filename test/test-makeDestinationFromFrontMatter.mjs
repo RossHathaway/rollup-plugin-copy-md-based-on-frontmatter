@@ -6,7 +6,7 @@ describe('makeDestinationFromFrontMatter', function () {
         assert.equal(
             makeDestinationFromFrontMatter(`---\ndocument_locations:\n  - location:\n    - folder_name: Categories\n    - folder_name: Architecture\n  - location:\n    - folder_name: Featured\n    - folder_name: Frank Lloyd Wright\n---`),
             makeDestinationFromFrontMatter,
-            [('Categories/Architecture', 'Frank Lloyd Wright')]
+            [('Categories/Architecture', 'Featured/Frank Lloyd Wright')]
         );
     });
 });
